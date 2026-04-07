@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Head2Toe Myo | Oral Myofunctional Therapy</title>
+  <meta name="description" content="Myofunctional therapy with Kamara Paye. Gentle, personalized support for breathing, oral posture, swallowing patterns, and long-term wellness." />
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --surface: rgba(255,255,255,0.72);
+      --surface-solid: #ffffff;
+      --text: #2f2b28;
+      --muted: #766f68;
+      --line: #ddd5cc;
+      --accent: #8d9b8c;
+      --accent-dark: #566554;
+      --shadow: 0 20px 50px rgba(46, 40, 34, 0.08);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.8), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(141,155,140,0.14), transparent 30%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(247,244,239,0.86);
+      border-bottom: 1px solid rgba(221,213,204,0.8);
+    }
+
+    .header-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .brand strong {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span,
+    .eyebrow {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255,255,255,0.66);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: var(--accent-dark);
+      color: white;
+      outline: none;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.08;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+    }
+
+    h1 { font-size: clamp(2.9rem, 8vw, 5.7rem); }
+    h2 { font-size: clamp(2rem, 5vw, 3.9rem); }
+    h3 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 44rem;
+      margin-top: 1.4rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 500;
+      transition: 180ms ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.65);
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(221,213,204,0.9);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.25rem;
+    }
+
+    .hero-visual {
+      min-height: 520px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(239,234,227,0.95)),
+        radial-gradient(circle at top, rgba(141,155,140,0.22), transparent 40%);
+      border: 1px solid rgba(221,213,204,0.85);
+      padding: 2rem;
+      display: flex;
+      align-items: end;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      color: #5d5751;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-heading {
+      max-width: 50rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-copy {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .grid-3,
+    .grid-2,
+    .blog-grid,
+    .contact-grid,
+    .about-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .contact-grid { grid-template-columns: 1.15fr 0.85fr; }
+    .about-grid { grid-template-columns: 1.1fr 0.9fr; }
+
+    .panel {
+      padding: 2rem;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+    }
+
+    .panel ul {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    .split-feature {
+      padding: 2.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .blog-post {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      min-height: 100%;
+    }
+
+    .meta {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+
+    .contact-form {
+      padding: 2rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+      color: #5f5952;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 0.95rem 1rem;
+      font: inherit;
+      color: var(--text);
+      background: rgba(255,255,255,0.82);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 180px;
+      border-radius: 24px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid rgba(141,155,140,0.35);
+      border-color: rgba(141,155,140,0.7);
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .site-footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--line);
+      margin-top: 3rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .blog-grid,
+      .contact-grid,
+      .about-grid,
+      .split-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 3.5rem; }
+      .hero-visual { min-height: 360px; }
+      .field-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 0;
+      }
+
+      .nav {
+        width: 100%;
+        border-radius: 24px;
+        justify-content: flex-start;
+      }
+
+      .nav a {
+        font-size: 0.9rem;
+        padding: 0.68rem 0.9rem;
+      }
+
+      .panel,
+      .contact-form,
+      .blog-post,
+      .split-feature { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Kamara Paye home">
+        <strong>Head2Toe Myo</strong>
+        <span>Oral Myofunctional Therapy</span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#resources">Resources</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Gentle support for breathing, sleep, and oral function</div>
+          <h1>Helping clients build healthier habits from the inside out.</h1>
+          <p class="lead">
+            Kamara Paye offers myofunctional therapy with a calm, personalized approach focused on oral posture, nasal breathing, swallowing patterns, and long-term wellness.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+            <a class="btn btn-secondary" href="#about">Meet Kamara</a>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <div class="hero-visual">
+            <div>
+              <div class="eyebrow">Areas of focus</div>
+              <div class="tag-list">
+                <span class="tag">Nasal Breathing</span>
+                <span class="tag">Tongue Posture</span>
+                <span class="tag">Swallow Pattern</span>
+                <span class="tag">Sleep Support</span>
+                <span class="tag">Oral Habit Correction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="card panel">
+          <h3>Personalized Care</h3>
+          <p>One-on-one guidance tailored to each client’s goals, habits, and stage of healing.</p>
+        </article>
+        <article class="card panel">
+          <h3>Whole-Body Perspective</h3>
+          <p>Support that connects oral function with sleep, breathing, posture, and everyday comfort.</p>
+        </article>
+        <article class="card panel">
+          <h3>Simple, Sustainable Tools</h3>
+          <p>Practical exercises and education designed to fit into real life and create lasting change.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">About Me</div>
+          <h2>A warm, grounded approach to myofunctional therapy.</h2>
+          <p class="section-copy">
+            Use this section to introduce Kamara Paye, her background, philosophy, and the kind of care clients can expect.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card panel">
+            <h3>Kamara’s Story</h3>
+            <p>
+              Welcome — I’m Kamara Paye, and I’m passionate about helping clients build healthier patterns through myofunctional therapy. My work is rooted in education, compassion, and attention to the small habits that can make a meaningful difference over time.
+            </p>
+            <p>
+              I believe therapy should feel approachable and supportive. Whether a client is navigating mouth breathing, tongue posture concerns, swallowing patterns, or sleep-related symptoms, my goal is to create a calm space where they feel informed, encouraged, and cared for.
+            </p>
+            <p>
+              This section can be customized with Kamara’s training, certifications, clinical background, and a more personal introduction.
+            </p>
+          </article>
+
+          <div>
+            <article class="card panel" style="margin-bottom: 1.4rem;">
+              <h3>Credentials</h3>
+              <ul>
+                <li>Add certifications and training here</li>
+                <li>Add educational background here</li>
+                <li>Add specialties or clinical areas of focus here</li>
+              </ul>
+            </article>
+            <article class="card panel">
+              <h3>Care Philosophy</h3>
+              <p>Thoughtful, evidence-informed care that empowers clients with clear education and realistic tools for progress.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Resources</div>
+          <h2>Helpful guidance for clients and families.</h2>
+          <p class="section-copy">
+            A space for handouts, FAQs, recommended reading, and supportive information about therapy and oral function.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card panel">
+            <h3>What to Expect in Therapy</h3>
+            <p>A simple overview of the evaluation process, treatment goals, and how sessions may work.</p>
+          </article>
+          <article class="card panel">
+            <h3>Common Signs and Symptoms</h3>
+            <p>Educational content about mouth breathing, tongue tie support, swallowing habits, and sleep-related concerns.</p>
+          </article>
+          <article class="card panel">
+            <h3>Home Support Tools</h3>
+            <p>A curated list of exercises, daily routines, and practical strategies clients can use between sessions.</p>
+          </article>
+          <article class="card panel">
+            <h3>Recommended Providers</h3>
+            <p>A place to share referrals or collaborative professionals such as ENTs, dentists, orthodontists, or bodyworkers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="card split-feature">
+          <div>
+            <div class="eyebrow">What is myofunctional therapy?</div>
+            <h2>A therapy approach that supports healthy oral and facial function.</h2>
+          </div>
+          <div>
+            <p class="section-copy" style="margin-top:0;">
+              Myofunctional therapy is the neuromuscular re-education of the oral and facial muscles. Through this therapy you are carving new neural pathways between the brain and the muscles of the mouth, tongue, and face. It can help improve breathing patterns, tongue posture, swallowing, and oral habits that can affect sleep, comfort, speech support, and overall wellness.
+            </p>
+            <div class="button-row" style="margin-top:1.25rem;">
+              <a class="btn btn-secondary" href="#resources">Explore Resources</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="blog">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Blog</div>
+          <h2>Thoughtful articles on breathing, sleep, oral habits, and wellness.</h2>
+          <p class="section-copy">
+            This section can hold educational posts, practice updates, and approachable writing that helps visitors understand the value of myofunctional therapy.
+          </p>
+        </div>
+
+        <div class="blog-grid">
+          <article class="card blog-post">
+            <div class="meta">Article 1</div>
+            <h3>What is mouth breathing, and why does it matter?</h3>
+            <p>A beginner-friendly post explaining how breathing patterns can affect sleep, oral health, and daily comfort.</p>
+            <a class="btn btn-secondary" href="#contact" style="width:max-content;">Read More</a>
+          </article>
+
+          <article class="card blog-post">
+            <div class="meta">Article 2</div>
+            <h3>How tongue posture supports healthy function</h3>
+            <p>A clear introduction to tongue resting posture and why it may be discussed in therapy.</p>
+            <a class="btn btn-secondary" href="#contact" style="width:max-content;">Read More</a>
+          </article>
+
+          <article class="card blog-post">
+            <div class="meta">Article 3</div>
+            <h3>5 gentle habits to support better oral function</h3>
+            <p>An easy lifestyle-style article that offers helpful, non-intimidating tips for clients at home.</p>
+            <a class="btn btn-secondary" href="#contact" style="width:max-content;">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Contact</div>
+          <h2>Reach out to schedule or ask a question.</h2>
+          <p class="section-copy">
+            Make it easy for new clients to get in touch, understand next steps, and feel welcomed from the first interaction.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card contact-form">
+            <form>
+              <div class="field-grid">
+                <div>
+                  <label for="first-name">First Name</label>
+                  <input id="first-name" type="text" placeholder="First name" />
+                </div>
+                <div>
+                  <label for="last-name">Last Name</label>
+                  <input id="last-name" type="text" placeholder="Last name" />
+                </div>
+                <div class="full">
+                  <label for="email">Email</label>
+                  <input id="email" type="email" placeholder="Email address" />
+                </div>
+                <div class="full">
+                  <label for="message">Message</label>
+                  <textarea id="message" placeholder="How can I help?"></textarea>
+                </div>
+              </div>
+              <div class="button-row">
+                <button class="btn btn-primary" type="submit">Send Inquiry</button>
+              </div>
+            </form>
+          </article>
+
+          <div>
+            <article class="card panel" style="margin-bottom: 1.4rem;">
+              <h3>Practice Information</h3>
+              <p>Email: head2toemyo@gmail.com</p>
+              <p>Phone: (619) 333-0801</p>
+              <p>Location: San Diego, CA and virtual services</p>
+            </article>
+            <article class="card panel">
+              <h3>Office Hours</h3>
+              <p>Monday – Thursday<br />9:00 AM – 5:00 PM</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2026 Kamara Paye Myofunctional Therapy</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#resources">Resources</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
